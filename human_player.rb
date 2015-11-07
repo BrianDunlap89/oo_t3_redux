@@ -13,9 +13,13 @@ class HumanPlayer
     choice
   end
 
-  def player_turn
+  def player_turn(moves)
     puts "Please choose an available space: "
     choice = gets.chomp.to_i
+    until moves.include?(choice)
+      choice = self.reprompt.to_i
+    end
+    choice
   end
 
   def reprompt

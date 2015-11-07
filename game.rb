@@ -17,10 +17,8 @@ class Game
   def turn_cycle
     until @board.game_over?
       @board.show_board
-      choice = @current_player.player_turn
-      until @board.available_moves.include?(choice)
-        choice = @current_player.reprompt.to_i
-      end
+      moves = @board.available_moves
+      choice = @current_player.player_turn(moves)
       @board.mark_board(choice, @mark)
       self.switch_player
     end
