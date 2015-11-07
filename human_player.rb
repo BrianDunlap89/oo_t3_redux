@@ -15,17 +15,21 @@ class HumanPlayer
 
   def player_turn
     puts "Please choose an available space: "
-    choice = gets.chomp
+    valid = 
+    choice = gets.chomp.to_i
   end
 
-  def validate
+  def reprompt
     puts "That was not a valid entry. Please try again: "
     choice = gets.chomp
     choice
   end
 
-  def yes_no?(choice)
+  def valid_response?(choice)
     valid = ["Y", "N"]
-    valid.include?(choice)
+    until valid.include?(choice)
+      choice = self.reprompt
+    end
+    choice
   end
 end
