@@ -17,8 +17,7 @@ class Game
   def turn_cycle
     until @board.game_over?
       @board.show_board
-      choice = @current_player.player_turn(@board.available_moves
-)
+      choice = @current_player.player_turn(@board.available_moves)
       @board.mark_board(choice, @mark)
       self.switch_player
     end
@@ -32,7 +31,7 @@ class Game
   def aftermath
     @board.show_board
     if @board.win?
-      puts "Congratulations, Player #{@current_player.mark}, you win!\n"
+      puts "Congratulations, Player #{@mark}, you win!\n"
       if @current_player == @p1
         @scoreboard.p1_win
       else 
