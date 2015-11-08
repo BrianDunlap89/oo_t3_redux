@@ -56,11 +56,11 @@ class Game
   end
 
   def play
-      @current_player = @p1
-      self.greeting
-      self.turn_cycle
-      self.switch_player
-      self.aftermath
-      self.play_again?
+    @current_player = @p1
+    self.greeting
+    self.turn_cycle
+    self.switch_player
+    self.aftermath
+    self.play_again?
   end
 end
