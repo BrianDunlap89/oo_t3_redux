@@ -27,7 +27,8 @@ class HumanPlayer
     choice = gets.chomp
   end
 
-  def valid_response?(choice)
+  def validate_response
+    choice = gets.chomp.upcase
     valid = ["Y", "N"]
     until valid.include?(choice)
       choice = self.reprompt.upcase

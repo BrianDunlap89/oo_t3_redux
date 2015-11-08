@@ -45,9 +45,8 @@ class Game
   end
 
   def play_again?
-    puts "Would you like to play again? (Y/N)/n"
-    choice = gets.chomp.upcase
-    @p1.valid_response?(choice)
+    puts "Would you like to play again? (Y/N)\n"
+    choice = @p1.validate_response
     unless choice == "N"
       @board = Board.new
       self.play
