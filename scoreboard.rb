@@ -14,18 +14,18 @@ class Scoreboard
     @scoreboard << @p1_stats << @p2_stats << @draws
   end
 
-  def add_wins(p1_wins, p2_wins)
-    @p1_stats["Player 1 Wins"] += p1_wins
-    @p2_stats["Player 2 Wins"] += p2_wins
+  def p1_win
+    @p1_stats["Player 1 Wins"] += 1
+    @p2_stats["Player 2 Losses"] += 1
   end
 
-  def add_losses(p1_losses, p2_losses)
-    @p1_stats["Player 1 Losses"] += p1_losses
-    @p2_stats["Player 2 Losses"] += p2_losses
+  def p2_win
+    @p1_stats["Player 1 Losses"] += 1
+    @p2_stats["Player 2 Wins"] += 1
   end
 
-  def add_draws(draws=0)
-    @draws["Draws"] += draws
+  def draw
+    @draws["Draws"] += 1
   end
 
   def display_scoreboard
