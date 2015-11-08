@@ -30,7 +30,7 @@ class HumanPlayer
   def valid_response?(choice)
     valid = ["Y", "N"]
     until valid.include?(choice)
-      choice = self.reprompt
+      choice = self.reprompt.upcase
     end
     choice
   end

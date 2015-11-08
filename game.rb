@@ -3,6 +3,7 @@ class Game
     @p1 = HumanPlayer.new
     @current_player = @p1
     @board = Board.new
+    @scoreboard = Scoreboard.new
   end
 
   def greeting
@@ -32,10 +33,19 @@ class Game
   def aftermath
     @board.show_board
     if @board.win?
-      puts "Congratulations, Player #{@mark}, you win!"
+      puts "Congratulations, Player #{@current_player.mark}, you win!"
+      if @current_player == @p1
+        @scoreboard.add_wins(1, 0)
+        @scoreboard.add_losses(0, 1)
+      else 
+        @scoreboard.add_wins(0, 1)
+        @scoreboard.add_losses(1, 0)
+      end
     else
       puts "No dice! It's a draw."
+      @scoreboard.add_draws(1)
     end
+    @scoreboard.display_scoreboard
   end
 
   def play_again?
@@ -43,8 +53,8 @@ class Game
     choice = gets.chomp.upcase
     @p1.valid_response?(choice)
     unless choice == "N"
-      game = Game.new
-      game.play
+      @board = Board.new
+      self.play
     end
   end
 
